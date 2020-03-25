@@ -124,6 +124,10 @@ namespace Heroesprofile.Uploader.Windows
                 if (ev.PropertyName == nameof(Settings.PreMatchPage)) {
                     Manager.PreMatchPage = Settings.PreMatchPage;
                 }
+
+                if (ev.PropertyName == nameof(Settings.PostMatchPage)) {
+                    Manager.PostMatchPage = Settings.PostMatchPage;
+                }
             };
 
             if (e.Args.Contains("--autorun") && Settings.MinimizeToTray) {

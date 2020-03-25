@@ -7,6 +7,7 @@ namespace Heroesprofile.Uploader.Common
     public interface IUploader
     {
         bool UploadToHotslogs { get; set; }
+        bool PostMatchPage { get; set; }
         Task CheckDuplicate(IEnumerable<ReplayFile> replays);
         Task<int> GetMinimumBuild();
         Task Upload(Replay replay_results, ReplayFile file);

@@ -190,5 +190,17 @@ namespace Heroesprofile.Uploader.Windows.Properties {
                 this["PreMatchPage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PostMatchPage {
+            get {
+                return ((bool)(this["PostMatchPage"]));
+            }
+            set {
+                this["PostMatchPage"] = value;
+            }
+        }
     }
 }

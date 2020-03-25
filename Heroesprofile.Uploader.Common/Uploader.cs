@@ -25,6 +25,7 @@ namespace Heroesprofile.Uploader.Common
 #endif
 
         public bool UploadToHotslogs { get; set; }
+        public bool PostMatchPage { get; set; }
 
         /// <summary>
         /// New instance of replay uploader
@@ -87,6 +88,10 @@ namespace Heroesprofile.Uploader.Common
 
                 dynamic json = JObject.Parse(response);
                 if ((bool)json.success) {
+                    if (PostMatchPage) {
+                        //System.Diagnostics.Process.Start("https://www.heroesprofile.com/Match/Single/?replayID=" + prematch_id);
+                    }
+
                     if (Enum.TryParse<UploadStatus>((string)json.status, out UploadStatus status)) {
                         _log.Debug($"Uploaded file '{file}': {status}");
                         return status;

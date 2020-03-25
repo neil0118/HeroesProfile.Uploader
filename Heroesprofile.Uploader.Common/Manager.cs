@@ -56,6 +56,7 @@ namespace Heroesprofile.Uploader.Common
 
         private int prematch_id = 0;
         public bool PreMatchPage { get; set; }
+
         private string _status = "";
         /// <summary>
         /// Current uploader status
@@ -89,6 +90,22 @@ namespace Heroesprofile.Uploader.Common
             set {
                 if (_uploader != null) {
                     _uploader.UploadToHotslogs = value;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Whether to mark replays post match page
+        /// </summary>
+        public bool PostMatchPage
+        {
+            get {
+                return _uploader?.PostMatchPage ?? false;
+            }
+            set {
+                if (_uploader != null) {
+                    _uploader.PostMatchPage = value;
                 }
             }
         }
