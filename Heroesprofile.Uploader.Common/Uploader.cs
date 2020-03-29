@@ -57,17 +57,10 @@ namespace Heroesprofile.Uploader.Common
         /// <returns>Upload result</returns>
         public async Task<UploadStatus> Upload(Replay replay_results, string fingerprint, string file)
         {
-            //I am having issues with the request being too large due to the replay_json object.  Might try compressing it and then decompressing it on the laravel side
-            //I am having a hard time getting it compressed though.  I tmight be because my code is sending everything but the file as get.  So need to send the json object
-            //through post, along with the file, but not sure how to do that.
-
-            //string replay_json = JsonConvert.SerializeObject(ToJson(replay_results));
 
             try {
                 string response;
                 using (var client = new WebClient()) {
-                    //var bytes = await client.UploadFileTaskAsync($"{HeroesProfileApiEndpoint}/upload?fingerprint={fingerprint}&data={replay_json}", file);
-
                     var bytes = await client.UploadFileTaskAsync($"{HeroesProfileApiEndpoint}/upload?fingerprint={fingerprint}", file);
                     response = Encoding.UTF8.GetString(bytes);
                 }
