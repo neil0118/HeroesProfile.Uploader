@@ -10,6 +10,7 @@ namespace Heroesprofile.Uploader.Common.Test
         private class MockUploader : IUploader
         {
             public bool UploadToHotslogs { get; set; }
+            public bool PostMatchPage { get; set; }
 
             private Func<ReplayFile, Task> UploadCallback = _ => Task.CompletedTask;
             public void SetUploadCallback(Func<ReplayFile, Task> onUpload)

@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Heroes.ReplayParser;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace Heroesprofile.Uploader.Common
 {
@@ -65,7 +66,6 @@ namespace Heroesprofile.Uploader.Common
                     response = Encoding.UTF8.GetString(bytes);
                 }
 
-
                 //Try upload to HotsApi as well
                 string hotsapiResponse;
                 try {
@@ -81,9 +81,20 @@ namespace Heroesprofile.Uploader.Common
 
                 dynamic json = JObject.Parse(response);
                 if ((bool)json.success) {
+
+                    string replayID = json.replayID;
+
+
                     if (PostMatchPage) {
-                        //System.Diagnostics.Process.Start("https://www.heroesprofile.com/Match/Single/?replayID=" + prematch_id);
+                        if (replayID != "") {
+                            if(File.GetCreationTime(file) > DateTime.Now.AddMinutes(-10)){
+                                Thread.Sleep(10000);
+                                System.Diagnostics.Process.Start("https://www.heroesprofile.com/Match/Single/?replayID=" + replayID);
+                            }
+                        }
                     }
+
+
 
                     if (Enum.TryParse<UploadStatus>((string)json.status, out UploadStatus status)) {
                         _log.Debug($"Uploaded file '{file}': {status}");
