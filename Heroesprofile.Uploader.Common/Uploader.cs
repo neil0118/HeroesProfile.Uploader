@@ -78,20 +78,15 @@ namespace Heroesprofile.Uploader.Common
 
                 }
 
+                var data = ToJson(replay_results);
 
                 dynamic json = JObject.Parse(response);
                 if ((bool)json.success) {
-
-                    string replayID = json.replayID;
-
-
                     if (PostMatchPage) {
-                        if (replayID != "") {
-                            if(File.GetCreationTime(file) > DateTime.Now.AddMinutes(-10)){
-                                Thread.Sleep(10000);
-                                System.Diagnostics.Process.Start("https://www.heroesprofile.com/Match/Single/?replayID=" + replayID);
-                            }
-                        }
+                        //if(File.GetCreationTime(file) > DateTime.Now.AddMinutes(-10)){
+                            //var data = ToJson(replay_results);
+                            //System.Diagnostics.Process.Start("https://www.heroesprofile.com/Match/Single/?replayID=" + replayID);
+                        //}
                     }
 
 
@@ -214,7 +209,7 @@ namespace Heroesprofile.Uploader.Common
                 return false;
             }
         }
-        /*
+        
         public static object ToJson(Replay replay)
         {
             var obj = new {
@@ -228,8 +223,8 @@ namespace Heroesprofile.Uploader.Common
                 version_major = replay.ReplayVersionMajor,
                 version_build = replay.ReplayBuild,
                 bans = replay.TeamHeroBans,
-                draft_order = replay.DraftOrder,
-                team_experience = replay.TeamPeriodicXPBreakdown,
+                //draft_order = replay.DraftOrder,
+                //team_experience = replay.TeamPeriodicXPBreakdown,
                 players = from p in replay.Players
                           select new {
                               battletag_name = p.Name,
@@ -241,25 +236,25 @@ namespace Heroesprofile.Uploader.Common
                               hero_level_taunt = p.HeroMasteryTiers,
                               team = p.Team,
                               winner = p.IsWinner,
-                              silenced = p.IsSilenced,
+                              //silenced = p.IsSilenced,
                               party = p.PartyValue,
                               talents = p.Talents.Select(t => t.TalentName),
                               score = p.ScoreResult,
-                              staff = p.IsBlizzardStaff,
-                              announcer = p.AnnouncerPackAttributeId,
-                              banner = p.BannerAttributeId,
-                              skin_title = p.SkinAndSkinTint,
-                              hero_skin = p.SkinAndSkinTintAttributeId,
-                              mount_title = p.MountAndMountTint,
-                              mount = p.MountAndMountTintAttributeId,
-                              spray_title = p.Spray,
-                              spray = p.SprayAttributeId,
-                              voice_line_title = p.VoiceLine,
-                              voice_line = p.VoiceLineAttributeId,
+                              //staff = p.IsBlizzardStaff,
+                              //announcer = p.AnnouncerPackAttributeId,
+                              //banner = p.BannerAttributeId,
+                              //skin_title = p.SkinAndSkinTint,
+                              //hero_skin = p.SkinAndSkinTintAttributeId,
+                              //mount_title = p.MountAndMountTint,
+                              //mount = p.MountAndMountTintAttributeId,
+                              //spray_title = p.Spray,
+                              //spray = p.SprayAttributeId,
+                              //voice_line_title = p.VoiceLine,
+                              //voice_line = p.VoiceLineAttributeId,
                           }
             };
             return obj;
         }
-        */
+        
     }
 }

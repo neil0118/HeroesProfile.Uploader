@@ -36,8 +36,8 @@ namespace Heroesprofile.Uploader.Windows
             }
 
             // Move files from old locations
-            if (File.Exists($@"{App.AppDir}\..\replays_V3.xml") && !File.Exists($@"{App.SettingsDir}\replays_V3.xml")) {
-                File.Move($@"{App.AppDir}\..\replays_V3.xml", $@"{App.SettingsDir}\replays_V3.xml");
+            if (File.Exists($@"{App.AppDir}\..\replays_V3.xml") && !File.Exists($@"{App.SettingsDir}\replays_V4.xml")) {
+                File.Move($@"{App.AppDir}\..\replays_V4.xml", $@"{App.SettingsDir}\replays_V4.xml");
             }
             if (File.Exists($@"{App.AppDir}\..\last.config") && !File.Exists($@"{App.SettingsDir}\last.config")) {
                 File.Move($@"{App.AppDir}\..\last.config", $@"{App.SettingsDir}\last.config");
